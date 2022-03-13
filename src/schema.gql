@@ -1,0 +1,51 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  email: String!
+  username: String!
+}
+
+type AuthRegResData {
+  registered: Boolean!
+}
+
+type AuthLogInData {
+  http_graphql_summit: String!
+  user_ceredentials: User!
+}
+
+type Message {
+  id: String!
+  author: String!
+  content: String!
+  time: Float!
+}
+
+type Room {
+  id: ID!
+  joinId: String!
+  roomname: String!
+  owner: String!
+  messages: [Message!]
+  createdAt: Float!
+}
+
+type Query {
+  users: String!
+  helloRoom: String!
+}
+
+type Mutation {
+  registerUser(username: String!, email: String!, password: String!): AuthRegResData!
+  logUser(email: String!, password: String!): AuthLogInData!
+  createRoom(roomname: String!, owner: String!): Room!
+  discardRoom(roomId: String!): Boolean!
+  createMessage(author: String!, content: String!, joinId: String!): Boolean!
+}
+
+type Subscription {
+  messages(joinId: String!): Message!
+}
